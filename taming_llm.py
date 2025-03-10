@@ -1,3 +1,6 @@
+# Nour Helmy 
+# 202202012
+
 import os
 import time
 from dotenv import load_dotenv
@@ -11,8 +14,6 @@ load_dotenv()
 class LLMClient:
     def __init__(self, model="llama3-70b-8192"):
         self.api_key = os.getenv("GROQ_API_KEY")
-        if not self.api_key:
-            raise ValueError("GROQ_API_KEY not found in .env file or environment variables.")
         self.client = groq.Client(api_key=self.api_key)
         self.model = model
 
@@ -72,7 +73,7 @@ def classify_with_confidence(client, text, categories, confidence_threshold=0.8)
     confidence = extract_section(completion, "2. CONFIDENCE: ", "\n")
     reasoning = extract_section(completion, "3. REASONING: ")
 
-    # Simulate confidence score (since logprobs is not supported)
+    # Simulate confidence score - logprobs is not supported
     confidence_score = 0.9 if confidence == "high" else 0.5 if confidence == "medium" else 0.2
 
     if confidence_score > confidence_threshold:
@@ -190,7 +191,7 @@ def run_streamlit_app():
 
     # Classify button
     if st.button("Classify"):
-        with st.spinner("Classifying text..."):  # Show a loading spinner
+        with st.spinner("Classifying text..."):  
             try:
                 # Initialize Groq client
                 client = LLMClient()
