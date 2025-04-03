@@ -1,4 +1,4 @@
-# CSAI 422: Lab Assignment 3 - Taming LLMs with Groq API
+# Taming LLMs with Groq API
 
 The goal of this assignment is to build a content classification and analysis tool using the Groq API. The tool classifies text into categories, extracts key insights, and compares different prompt strategies.
 
